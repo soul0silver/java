@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5bd1b983-2c0d-428c-a26a-e9e749c45d45" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/collection/src/ArrayListExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collection/src/HashSetEx.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collection/src/LinkHashSetEx.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collection/src/LinkedListEx.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collection/src/PriorityQueueEx.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collection/src/SortedSetEX.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collection/src/StackEx.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collection/src/bank/ATMApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collection/src/bank/AccountBank.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collection/src/bank/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collection/src/map/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collection/src/map/HashMapEx.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collection/src/map/Student.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2VxapJbfsqDauprRLujJtHa8w7v" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5bd1b983-2c0d-428c-a26a-e9e749c45d45" name="Default Changelist" comment="" />
+      <created>1695780369883</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1695780369883</updated>
+      <workItem from="1695780373082" duration="90000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
