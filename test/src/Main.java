@@ -18,6 +18,7 @@ public class Main {
         initializeProducts(products);
         //End task a
         //task b
+        System.out.println("Order for “Mike Tyson” at “2023-08-08 11:30:00”");
         Order order=new Order();
         order.setCustomerName("Mike Tyson");
         order.setTransactionTime("2023-08-08 11:30:00");
@@ -62,8 +63,10 @@ public class Main {
         }
         //Print all the information of the order
         System.out.println(order);
+        System.out.println();
         //End task b
         //task c
+        System.out.println("Delivery order for “Chris Evans” at “2023-08-09 13:14:00”");
         DeliveryOrder deliveryOrder=new DeliveryOrder();
         deliveryOrder.setCustomerName("Chris Evans");
         deliveryOrder.setTransactionTime("2023-08-09 13:14:00");
