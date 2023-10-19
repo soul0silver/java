@@ -17,6 +17,7 @@ public class Controller {
         int id=sc.nextInt();
         sc.nextLine();
         repo.createCus(name,id);
+
     }
     public void update() throws SQLException {
         Scanner sc=new Scanner(System.in);
@@ -30,8 +31,11 @@ public class Controller {
     public void  del() throws SQLException {
         Scanner sc=new Scanner(System.in);
         System.out.println("Input name:");
-        String name=sc.nextLine();
-        repo.delCus(name);
+        int id= sc.nextInt();
+        sc.nextLine();
+        String name= sc.nextLine();
+        Customer customer=new Customer(id,name);
+        repo.delCus(customer);
     }
     public void find() throws SQLException {
         Scanner sc=new Scanner(System.in);

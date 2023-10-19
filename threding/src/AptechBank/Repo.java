@@ -37,9 +37,9 @@ public class Repo {
         statement.close();
     }
 
-    public void delCus(String name ) throws SQLException {
+    public void delCus(Customer customer) throws SQLException {
         Connection connection =getConnection();
-        PreparedStatement statement=connection.prepareStatement("delete from customer where name="+ name );
+        PreparedStatement statement=connection.prepareStatement("delete from customer where id="+ customer.getId() );
         int c= statement.executeUpdate();
         if (c>0) System.out.println("ss");
         statement.close();
@@ -54,6 +54,7 @@ public class Repo {
             customer.setId(c.getInt(1));
             customer.setName(c.getString(2));
         }
+        c.close();
         statement.close();
         return customer;
     }
@@ -64,6 +65,7 @@ public class Repo {
         while (c.next()){
             System.out.println(c.getInt(1)+"-"+c.getString(2));
         }
+        c.close();
         statement.close();
     }
 }

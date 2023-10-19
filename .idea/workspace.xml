@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5bd1b983-2c0d-428c-a26a-e9e749c45d45" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/collection/src/ArrayListExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/collection/src/HashSetEx.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/collection/src/LinkHashSetEx.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/collection/src/LinkedListEx.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/collection/src/PriorityQueueEx.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/collection/src/SortedSetEX.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/collection/src/StackEx.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/collection/src/bank/ATMApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/collection/src/bank/AccountBank.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/collection/src/bank/Menu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/collection/src/map/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/collection/src/map/HashMapEx.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/collection/src/map/Student.java" afterDir="false" />
+    <list default="true" id="9dfb693b-ac54-4be8-b16c-28e31d9fb841" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/QLNV/src/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QLNV/src/controller/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QLNV/src/controller/EmployeeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QLNV/src/controller/EmployeeDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QLNV/src/model/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QLNV/src/repository/EmployeeRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QLNV/src/repository/RepoAbtract.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QLNV/src/service/EmployeeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QLNV/src/service/imp/EmployeeServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newpr/src/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newpr/src/repository/RepoAbtract.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newpr/src/repository/UserRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/threding/src/crypt/PasswordBaseEx.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/threding/src/AptechBank/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/threding/src/AptechBank/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/threding/src/AptechBank/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/threding/src/AptechBank/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/threding/src/AptechBank/Repo.java" beforeDir="false" afterPath="$PROJECT_DIR$/threding/src/AptechBank/Repo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/threding/threding.iml" beforeDir="false" afterPath="$PROJECT_DIR$/threding/threding.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="2VxapJbfsqDauprRLujJtHa8w7v" />
+  <component name="ProjectId" id="2WuxoOneB3iSxpj0UBPhI5AN6Eg" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -38,12 +43,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5bd1b983-2c0d-428c-a26a-e9e749c45d45" name="Default Changelist" comment="" />
-      <created>1695780369883</created>
+      <changelist id="9dfb693b-ac54-4be8-b16c-28e31d9fb841" name="Default Changelist" comment="" />
+      <created>1697596440948</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1695780369883</updated>
-      <workItem from="1695780373082" duration="90000" />
+      <updated>1697596440948</updated>
+      <workItem from="1697596443904" duration="375000" />
     </task>
     <servers />
   </component>
