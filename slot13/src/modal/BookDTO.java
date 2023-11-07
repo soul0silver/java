@@ -66,7 +66,7 @@ public class BookDTO {
                 ", auth='" + auth + '\'' +
                 ", quantity=" + quantity +
                 ", borrow=" + borrow +
-                '}';
+                '}'+'\n';
     }
 }
 

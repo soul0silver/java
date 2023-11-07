@@ -6,16 +6,25 @@ public class Ticket {
     private String des;
     private String datReturn;
     private boolean status;
-
+    private int sid;
     public Ticket() {
     }
 
-    public Ticket(int id, String dateBorrow, String des, String datReturn,boolean status) {
+    public int getSid() {
+        return sid;
+    }
+
+    public void setSid(int sid) {
+        this.sid = sid;
+    }
+
+    public Ticket(int id, String dateBorrow, String des, String datReturn, boolean status, int sid) {
         this.id = id;
         this.dateBorrow = dateBorrow;
         this.des = des;
         this.datReturn = datReturn;
-        this.status=status;
+        this.status = status;
+        this.sid = sid;
     }
 
     public int getId() {
@@ -56,5 +65,14 @@ public class Ticket {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "id:" + id +'\n'+
+                "dateBorrow:" + dateBorrow + '\n' +
+                "des:" + des + '\n' +
+                "datReturn:" + datReturn + '\n' +
+                "status:" + status ;
     }
 }

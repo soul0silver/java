@@ -1,8 +1,6 @@
 package service;
 
-import modal.Book;
-import modal.BookDTO;
-import modal.Borrow;
+import modal.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -89,92 +87,148 @@ public class LibraryService {
         return book;
     }
 
-    public String viewBook() throws SQLException {
+    public List<BookDTO> viewBook() throws SQLException {
         List<BookDTO> books = new ArrayList<>();
 
         Connection connection = getConnect();
-        PreparedStatement statement = connection.prepareStatement("select b.*,bo.quantity from book b,borrow bo where b.code=bo.bid ");
+        PreparedStatement statement = connection.prepareStatement("select * from book b");
         ResultSet set = statement.executeQuery();
         while (set.next()) {
-            BookDTO book=new BookDTO() ;
+            BookDTO book = new BookDTO();
             book.setCode(set.getInt(1));
             book.setName(set.getString(2));
             book.setAuth(set.getString(3));
             book.setQuantity(set.getInt(4));
-            book.setBorrow(set.getInt(5));
             books.add(book);
         }
-        close(set);
-        close(statement);
+        for (BookDTO bo : books) {
+            PreparedStatement statement1 =
+                    connection.prepareStatement("select s.q from ticket t, " +
+                    "(select sum(quan) q,bid,tid " +
+                    "from ticket_details where bid=?  group by bid)as s where s.tid=t.id and t.status=false");
+            statement1.setInt(1,bo.getCode());
+            ResultSet set1 = statement1.executeQuery();
+            while (set1.next()) {
+                System.out.println(set1.getInt(1));
+                bo.setBorrow(set1.getInt(1));
+                break;
+            }
+            close(set1);
+            close(statement1);
+        }
+
         close(connection);
-        return books.toString();
+        return books;
     }
 
-    public String borrow(int code, int bo) throws SQLException {
-        Book book = searchByCode(code);
-        book.setQuantity(book.getQuantity() - bo);
+    public String borrow(List<Book> books, Ticket ticket) throws SQLException {
         Connection connection = getConnect();
-        PreparedStatement statement =
-                connection.prepareStatement("update  book set quantity=? where code=?");
-        statement.setInt(2, code);
-        statement.setInt(1, book.getQuantity());
-        int e=statement.executeUpdate();
-        Borrow borrow=searchByBid(code);
-        borrow.setQuantity(borrow.getQuantity()+bo);
-        PreparedStatement statement1 =
-                connection.prepareStatement("update  borrow set quantity=? where id=?");
-        statement1.setInt(2, borrow.getId());
-        statement1.setInt(1, borrow.getQuantity());
-        int b=statement1.executeUpdate();
-        PreparedStatement statement2 = connection.prepareStatement("insert into ticket( dateborrow ,des,datereturn,status) values (?,?,?,?)");
-        statement2.setString(1, new Date().toString());
-        statement2.setString(2, "");
-        statement2.setString(3, "");
-        statement2.setBoolean(4,true);
-        close(statement1);
-        close(statement2);
-        close(statement);
-        close(connection);
-        return "done";
-    }
-    public String lend(int code) throws SQLException {
-        Connection connection = getConnect();
-        Borrow borrow=searchByBid(code);
-        borrow.setQuantity(0);
-        PreparedStatement statement1 =
-                connection.prepareStatement("update  borrow set quantity=? where id=?");
-        statement1.setInt(2, borrow.getId());
-        statement1.setInt(1, borrow.getQuantity());
-        int b=statement1.executeUpdate();
-        Book book = searchByCode(code);
-        book.setQuantity(book.getQuantity() + borrow.getQuantity());
-        PreparedStatement statement =
-                connection.prepareStatement("update  book set quantity=? where code=?");
-        statement.setInt(2, code);
-        statement.setInt(1, book.getQuantity());
-        int e=statement.executeUpdate();
-        close(statement1);
-        close(statement);
-        close(connection);
-        return "done";
-    }
 
-    public Borrow searchByBid(int bid) throws SQLException {
-        Borrow borrow = new Borrow();
-        Connection connection = getConnect();
-        PreparedStatement statement = connection.prepareStatement("select * from borrow where bid=?");
-        statement.setInt(1, bid);
+        PreparedStatement statement1 =
+                connection.prepareStatement("insert into ticket(dateborrow,des,datereturn,status,sid) values (?,?,?,?,?)");
+        statement1.setString(1, ticket.getDateBorrow());
+        statement1.setString(2, ticket.getDes());
+        statement1.setString(3, ticket.getDatReturn());
+        statement1.setBoolean(4, false);
+        statement1.setInt(5,ticket.getSid());
+        int b = statement1.executeUpdate();
+
+        PreparedStatement statement = connection.prepareStatement("select * from ticket where sid=? and dateborrow=?");
+        statement.setInt(1, ticket.getSid());
+        statement.setString(2, ticket.getDateBorrow());
         ResultSet set = statement.executeQuery();
         while (set.next()) {
-            borrow.setId(set.getInt(1));
-            borrow.setBid(set.getInt(2));
-            borrow.setQuantity(set.getInt(3));
+            ticket.setSid(set.getInt(1));
+        }
+        for (Book i : books) {
+            PreparedStatement statement2 = connection.prepareStatement("insert into ticket_details( tid ,bid,quan) values (?,?,?)");
+            statement2.setInt(1, ticket.getId());
+            statement2.setInt(2, i.getCode());
+            statement2.setInt(3, i.getQuantity());
 
+            int c = statement2.executeUpdate();
+            close(statement2);
+        }
+        close(statement1);
+        close(connection);
+        return "done";
+    }
+
+    public String lend(Ticket ticket) throws SQLException {
+        int c = 0;
+        Connection connection = getConnect();
+        PreparedStatement statement1 =
+                connection.prepareStatement("update  ticket set status=? where id=?");
+        statement1.setInt(2, ticket.getId());
+        statement1.setBoolean(1, true);
+        int b = statement1.executeUpdate();
+        close(statement1);
+        close(connection);
+        return "done";
+    }
+
+    public List<Ticket> searchTicket(int sid) throws SQLException {
+        List<Ticket> list = new ArrayList<>();
+        Connection connection = getConnect();
+        PreparedStatement statement = connection.prepareStatement("select * from ticket where sid=? and status=?");
+        statement.setInt(1, sid);
+        statement.setBoolean(2, false);
+        ResultSet set = statement.executeQuery();
+        while (set.next()) {
+            Ticket ticket = new Ticket();
+            ticket.setId(set.getInt(1));
+            ticket.setDateBorrow(set.getString(2));
+            ticket.setDes(set.getString(3));
+            ticket.setDatReturn(set.getString(4));
+            ticket.setStatus(set.getBoolean(5));
+            ticket.setSid(set.getInt(6));
+            list.add(ticket);
         }
         close(set);
         close(statement);
         close(connection);
 
-        return borrow;
+        return list;
     }
+
+    public List<TicketDetails> getList(int tid) throws SQLException {
+        List<TicketDetails> list = new ArrayList<>();
+        Connection connection = getConnect();
+        PreparedStatement statement = connection.prepareStatement("select * from ticket_details where tid=? ");
+        statement.setInt(1, tid);
+
+        ResultSet set = statement.executeQuery();
+        while (set.next()) {
+            TicketDetails ticket = new TicketDetails();
+            ticket.setId(set.getInt(1));
+            ticket.setTid(set.getInt(2));
+            ticket.setBid(set.getInt(3));
+            ticket.setQuantity(set.getInt(4));
+            list.add(ticket);
+        }
+        close(set);
+        close(statement);
+        close(connection);
+        return list;
+    }
+
+    public boolean checkQuan(int code, int quan) throws SQLException {
+        Connection connection = getConnect();
+        PreparedStatement statement =
+                connection.prepareStatement("select s.q from ticket t, " +
+                        "(select sum(quan) q,bid,tid " +
+                        "from ticket_details where bid=?  group by bid)as s where s.tid=t.id and t.status=false");
+        statement.setInt(1,code);
+        ResultSet set = statement.executeQuery();
+        Borrow borrow=new Borrow();
+        while (set.next()){
+            borrow.setBid(code);
+            borrow.setQuantity(set.getInt(1));
+        }
+        Book book = searchByCode(code);
+        if (book.getQuantity() >= (borrow.getQuantity() + quan))
+            return true;
+        return false;
+    }
+
 }
